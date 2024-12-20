@@ -4,21 +4,35 @@ class Persona {
     private address: string; */
 
 
-    constructor ( public name:string, public address:string) {
+    constructor ( public name:string, public address:string, public children: number) {
         this.name = name,
-        this.address = address
+        this.address = address,
+        this.children = children
     }
 }
 
-class Futbolista extends Persona {
+/* class Futbolista extends Persona {
 
     constructor( public nickName: string, public age: number, public dorsal:number){
         super( 'neymar jr dos santos', 'Arabia')
     }
+} */
+
+
+/* Otra forma de hacer la herencia  */
+class Futbolista  {
+
+    constructor( 
+        public nickName: string, public age: number, public dorsal:number, public playerSoccer:Persona
+    ){
+       
+    }
 }
 
 
-const ney = new Futbolista ( 'El principe que no fue rey', 35, 11)
+
+const neyJr = new Persona ('Neymar Junior Dos Santos', 'Medallo', 2)
+const ney = new Futbolista ( 'El principe que no fue rey', 35, 11, neyJr)
 
 console.log(ney);
 
@@ -173,3 +187,94 @@ const otherMascota = new Gato()
 
 mascota.hacerSonido()
 otherMascota.hacerSonido()
+
+console.log("--------- EJERCICIO 3 CLASES --------------");
+
+
+/* 
+
+Crea una clase base llamada Vehiculo que tenga las siguientes propiedades y métodos:
+
+Propiedades:
+marca (string)
+modelo (string)
+año (número)
+
+Métodos:
+Un método mostrarInformacion() que imprima la información del vehículo (marca, modelo y año).
+
+Luego, crea dos clases derivadas:
+Coche que herede de Vehiculo. La clase Coche debe tener una propiedad extra:
+puertas (número)
+Y un método extra:
+mostrarNumeroDePuertas() que imprima cuántas puertas tiene el coche.
+
+Moto que también herede de Vehiculo. La clase Moto debe tener una propiedad extra:
+cilindrada (número) que indique el tamaño del motor de la moto.
+
+Y un método extra:
+mostrarCilindrada() que imprima la cilindrada de la moto.
+
+Finalmente, crea al menos un objeto de cada clase (un coche y una moto) e imprime la información de cada uno usando los métodos correspondientes
+
+*/
+
+
+class Vehiculo {
+    public marca:string;
+    public modelo: string;
+    public anio: number;
+
+    constructor(marca:string, modelo:string, anio:number){
+        this.marca = marca,
+        this.modelo = modelo,
+        this.anio = anio
+    }
+
+    mostrarInformacion (){
+        console.log(`la marca de tu carro es ${this.marca}, un carro de modelo ${this.modelo}, del anio ${this.anio}`);
+    }
+}
+
+
+class Coche extends Vehiculo {
+    public puertas: number;
+
+    constructor(puertas:number, marca:string, modelo:string, anio:number){
+        super(marca, modelo, anio);
+        this.puertas = puertas;
+    }
+
+    mostrarNumeroDePuertas(){
+        console.log(`Este coche tiene ${this.puertas} numero de puertas`);
+        
+    }
+    
+}
+
+ 
+class Moto extends Vehiculo {
+    public cilindraje: number;
+
+    constructor(cilindraje:number, marca:string, modelo:string, anio:number){
+        super(marca, modelo, anio);
+        this.cilindraje = cilindraje;
+    }
+
+    mostrarCilindrada(){
+        console.log(`El cilindraje de tu moto es de ${this.cilindraje}`);
+        
+    }
+}
+
+
+const miCarro = new Coche (4, 'Toyota', 'Fortuner', 2025)
+miCarro.mostrarInformacion()
+miCarro.mostrarNumeroDePuertas()
+
+console.log('******************************');
+
+
+const miMoto = new Moto (1200, 'Ducati', 'Hypermotard', 2025 )
+miMoto.mostrarCilindrada()
+miMoto.mostrarInformacion()
