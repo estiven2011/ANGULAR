@@ -113,7 +113,7 @@ const cuenta2: CuentaBancaria = {
     saldo: 1500
 };
 
-const { saldo, transacciones, telefonoContacto } = cuenta1;
+const {  transacciones, telefonoContacto } = cuenta1;
 const { saldo: saldo2, transacciones: transacciones2 , telefonoContacto: telefono2  } = cuenta2;
 
 
